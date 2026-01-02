@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pl" class="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Antigravity Gym</title>
+
+    <!-- PWA & Mobile -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#09090b">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <!-- Fonts & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --safe-top: env(safe-area-inset-top);
+            --safe-bottom: env(safe-area-inset-bottom);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            /* Zinc 950 */
+            color: #e4e4e7;
+            /* Zinc 200 */
+            -webkit-tap-highlight-color: transparent;
+            overflow: hidden;
+            /* Prevent body scroll, handle in main */
+        }
+
+        /* Custom Scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Glassmorphism */
+        .glass-nav {
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-header {
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Animations */
+        .tap-active:active {
+            transform: scale(0.97);
+            opacity: 0.9;
+            transition: transform 0.1s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Modal Transitions */
+        .modal-enter-active {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+            transform: translateY(0);
+        }
+
+        .modal-enter {
+            transform: translateY(100%);
+        }
+
+        .modal-exit-active {
+            transition: transform 0.3s ease-in;
+            transform: translateY(100%);
+        }
+
+        /* Utilities */
+        .safe-pt {
+            padding-top: max(1rem, var(--safe-top));
+        }
+
+        .safe-pb {
+            padding-bottom: max(5rem, calc(5rem + var(--safe-bottom)));
+        }
+
+        /* Nav height + safe area */
+    </style>
+</head>
+
+<body class="h-screen w-screen flex flex-col bg-zinc-950 text-zinc-200">
+
+    <!-- Header -->
+    <header
+        class="fixed top-0 left-0 w-full z-30 glass-header px-6 pt-[calc(env(safe-area-inset-top)+1rem)] pb-4 flex justify-between items-end transition-all duration-300">
+        <div>
+            <h1
+                class="text-[10px] uppercase tracking-[0.25em] text-emerald-500 font-bold mb-1 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">
+                Antigravity</h1>
+            <h2 class="text-2xl font-extrabold text-white tracking-tight leading-none" id="page-title">Twój Plan</h2>
+        </div>
+        <div id="header-action"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+        class="flex-1 overflow-y-auto no-scrollbar relative w-full pt-[calc(env(safe-area-inset-top)+6rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)] px-4"
+        id="app-container">
+        <!-- Content injected by JS -->
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-40 glass-nav pb-[env(safe-area-inset-bottom)] pt-2 px-6 flex justify-around items-center h-[calc(4rem+env(safe-area-inset-bottom))]">
+        <button
+            class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group active-nav w-16"
+            onclick="router('home')">
+            <span
+                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 group-[.active-nav]:drop-shadow-[0_0_10px_rgba(52,211,153,0.6)] transition-all">fitness_center</span>
+            <span class="text-[9px] uppercase tracking-widest font-bold group-[.active-nav]:text-white">Trening</span>
+        </button>
+        <button
+            class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group w-16"
+            onclick="router('body')">
+            <span
+                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 group-[.active-nav]:drop-shadow-[0_0_10px_rgba(52,211,153,0.6)] transition-all">monitor_weight</span>
+            <span class="text-[9px] uppercase tracking-widest font-bold group-[.active-nav]:text-white">Waga</span>
+        </button>
+        <button
+            class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group w-16"
+            onclick="router('settings')">
+            <span
+                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 group-[.active-nav]:drop-shadow-[0_0_10px_rgba(52,211,153,0.6)] transition-all">calculate</span>
+            <span class="text-[9px] uppercase tracking-widest font-bold group-[.active-nav]:text-white">Opcje</span>
+        </button>
+    </nav>
+
+    <!-- Workout/Exercise Modal -->
+    <div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center"
+        id="exercise-modal">
+        <div class="absolute inset-0" onclick="closeModal()"></div>
+        <div class="bg-[#121214] border-t border-zinc-800 w-full sm:w-96 rounded-t-[2rem] sm:rounded-[2rem] shadow-2xl relative z-10 modal-enter h-[90vh] flex flex-col"
+            id="modal-content">
+
+            <!-- Drag Handle -->
+            <div class="w-full flex justify-center pt-3 pb-1" onclick="closeModal()">
+                <div class="w-12 h-1.5 bg-zinc-700 rounded-full"></div>
+            </div>
+
+            <!-- Modal Header -->
+            <div class="px-6 pb-4 pt-2 flex justify-between items-start">
+                <div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight" id="modal-exercise-name">Nazwa</h3>
+                    <p class="text-xs text-zinc-400 mt-1 font-medium">Ostatnio: <span class="text-emerald-400 font-mono"
+                            id="modal-last-weight">--</span></p>
+                </div>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="px-6 pb-4">
+                <div class="flex p-1 bg-zinc-900/50 rounded-xl border border-zinc-800/50">
+                    <button
+                        class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-zinc-800 shadow-sm transition-all"
+                        id="tab-log" onclick="switchModalTab('log')">Zapisz</button>
+                    <button
+                        class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-all"
+                        id="tab-history" onclick="switchModalTab('history')">Historia</button>
+                </div>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto px-6 pb-8" id="modal-body-content">
+                <!-- Injected content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. STATE & DATA ---
+        const defaultSplits = [
+            { id: 'push', name: 'Push', sub: 'Klatka / Barki / Triceps' },
+            { id: 'pull', name: 'Pull', sub: 'Plecy / Biceps / Tył' },
+            { id: 'legs', name: 'Legs', sub: 'Nogi / Łydki' },
+            { id: 'upper', name: 'Upper', sub: 'Góra Siłowo' },
+            { id: 'lower', name: 'Lower', sub: 'Dół Siłowo' },
+        ];
+
+        const initialExercises = {
+            'push': ['Wyciskanie Leżąc', 'Wyciskanie Żołnierskie', 'Wznosy Bokiem'],
+            'pull': ['Martwy Ciąg', 'Podciąganie', 'Wiosłowanie'],
+            'legs': ['Przysiady', 'Wypychanie Nóg', 'Wykroki'],
+            'upper': ['Wyciskanie Skos', 'Wiosłowanie Półsztangą', 'Dipsy'],
+            'lower': ['RDL', 'Przysiady Bułgarskie', 'Uginanie Nóg']
+        };
+
+        let appState = {
+            currentWeight: 70,
+            weightHistory: [],
+            logs: {},
+            exercises: JSON.parse(JSON.stringify(initialExercises)),
+            progressionFactor: 1.025,
+            currentView: 'home',
+            currentDayId: null
+        };
+
+        // --- 2. LOGIC ---
+        function getPrediction(exerciseName) {
+            const history = appState.logs[exerciseName];
+            if (!history || history.length === 0) return null;
+            const lastSession = history[history.length - 1];
+            let rawPrediction = lastSession.weight * appState.progressionFactor;
+            let prediction = Math.round(rawPrediction * 2) / 2;
+            return { lastWeight: lastSession.weight, lastReps: lastSession.reps, predicted: prediction };
+        }
+
+        function deleteLogEntry(exerciseName, originalIndex) {
+            if (confirm('Usunąć ten wynik?')) {
+                appState.logs[exerciseName].splice(originalIndex, 1);
+                renderModalContent();
+                const history = appState.logs[exerciseName] || [];
+                const last = history.length > 0 ? history[history.length - 1] : null;
+                document.getElementById('modal-last-weight').innerText = last ? `${last.weight}kg x ${last.reps}` : '--';
+            }
+        }
+
+        function addExerciseLogic(dayId) {
+            const name = prompt("Podaj nazwę nowego ćwiczenia:");
+            if (name && name.trim() !== "") {
+                if (!appState.exercises[dayId]) appState.exercises[dayId] = [];
+                appState.exercises[dayId].push(name.trim());
+                renderWorkoutDay(dayId);
+            }
+        }
+
+        function removeExerciseLogic(dayId, index) {
+            if (confirm("Czy na pewno chcesz usunąć to ćwiczenie?")) {
+                appState.exercises[dayId].splice(index, 1);
+                renderWorkoutDay(dayId);
+            }
+        }
+
+        // --- 3. UI RENDERING ---
+        const container = document.getElementById('app-container');
+        const pageTitle = document.getElementById('page-title');
+        const headerAction = document.getElementById('header-action');
+
+        function router(view, params = null) {
+            appState.currentView = view;
+            container.innerHTML = '';
+
+            // Update Nav
+            document.querySelectorAll('nav button').forEach(btn => {
+                const isActive = btn.onclick.toString().includes(`'${view}'`) && view !== 'workout';
+                if (isActive) btn.classList.add('active-nav');
+                else btn.classList.remove('active-nav');
+            });
+
+            if (view === 'home') {
+                renderHome();
+                headerAction.innerHTML = '';
+            } else if (view === 'workout') {
+                appState.currentDayId = params;
+                renderWorkoutDay(params);
+                headerAction.innerHTML = `
+                    <button onclick="router('home')" class="p-2 -mr-2 text-zinc-400 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>`;
+            } else if (view === 'body') {
+                renderBodyWeight();
+                headerAction.innerHTML = '';
+            } else if (view === 'settings') {
+                renderSettings();
+                headerAction.innerHTML = '';
+            }
+        }
+
+        function renderHome() {
+            pageTitle.innerText = "Twój Plan";
+            const list = document.createElement('div');
+            list.className = "flex flex-col gap-4 fade-in";
+
+            defaultSplits.forEach((day) => {
+                const btn = document.createElement('button');
+                btn.className = "text-left w-full bg-zinc-900/40 backdrop-blur-md border border-white/5 p-5 rounded-3xl flex items-center justify-between group tap-active hover:bg-zinc-800/50 transition-all shadow-lg shadow-black/20";
+                btn.onclick = () => router('workout', day.id);
+                const count = appState.exercises[day.id] ? appState.exercises[day.id].length : 0;
+                btn.innerHTML = `
+                    <div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <h3 class="font-bold text-xl text-white tracking-tight">${day.name}</h3>
+                            <span class="text-[9px] text-emerald-500 font-extrabold uppercase tracking-wider bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">${count} ćwiczeń</span>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-medium">${day.sub}</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-black transition-all">
+                        <span class="material-symbols-outlined text-zinc-500 group-hover:text-black text-lg">chevron_right</span>
+                    </div>
+                `;
+                list.appendChild(btn);
+            });
+            container.appendChild(list);
+        }
+
+        function renderWorkoutDay(dayId) {
+            container.innerHTML = '';
+            const dayInfo = defaultSplits.find(d => d.id === dayId);
+            pageTitle.innerText = dayInfo.name;
+
+            const list = document.createElement('div');
+            list.className = "space-y-3 fade-in";
+            const exercises = appState.exercises[dayId] || [];
+
+            if (exercises.length === 0) {
+                list.innerHTML = `<div class="text-center text-zinc-600 text-sm py-10">Brak ćwiczeń. Dodaj pierwsze!</div>`;
+            } else {
+                exercises.forEach((ex, index) => {
+                    const history = appState.logs[ex] || [];
+                    const lastLog = history.length > 0 ? history[history.length - 1] : null;
+                    const item = document.createElement('div');
+                    item.className = "group relative bg-zinc-900/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden flex shadow-sm";
+                    item.innerHTML = `
+                        <div class="flex-1 p-5 tap-active cursor-pointer" onclick="openModal('${ex}')">
+                            <h4 class="font-bold text-zinc-100 text-lg leading-tight mb-2">${ex}</h4>
+                            <div class="flex items-center gap-2">
+                                ${lastLog
+                            ? `<span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]">${lastLog.weight}kg <span class="text-zinc-500 font-normal mx-1">x</span> ${lastLog.reps}</span>`
+                            : `<span class="text-[10px] uppercase font-bold text-zinc-500 bg-zinc-800 px-2 py-1 rounded">Nowe</span>`}
+                            </div>
+                        </div>
+                        <button onclick="removeExerciseLogic('${dayId}', ${index})" class="w-12 bg-zinc-900/50 hover:bg-red-500/20 hover:text-red-500 text-zinc-700 transition-colors flex items-center justify-center border-l border-white/5">
+                            <span class="material-symbols-outlined text-lg">delete</span>
+                        </button>
+                    `;
+                    list.appendChild(item);
+                });
+            }
+
+            const addBtn = document.createElement('button');
+            addBtn.className = "w-full mt-6 py-4 rounded-2xl border border-dashed border-zinc-700 text-zinc-500 text-xs font-bold uppercase tracking-widest hover:border-emerald-500 hover:text-emerald-500 transition-all tap-active";
+            addBtn.innerHTML = "+ Dodaj ćwiczenie";
+            addBtn.onclick = () => addExerciseLogic(dayId);
+            list.appendChild(addBtn);
+            container.appendChild(list);
+        }
+
+        function renderBodyWeight() {
+            pageTitle.innerText = "Waga";
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex flex-col h-full fade-in";
+
+            const display = document.createElement('div');
+            display.className = "flex flex-col items-center justify-center py-10 relative";
+            display.innerHTML = `
+                <div class="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full transform scale-75"></div>
+                <div class="text-[6rem] font-extrabold text-white leading-none tracking-tighter tabular-nums drop-shadow-2xl relative z-10" id="bw-display">${appState.currentWeight.toFixed(1)}</div>
+                <div class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] mt-4 font-bold relative z-10">Aktualna Waga (kg)</div>
+            `;
+
+            const controls = document.createElement('div');
+            controls.className = "bg-zinc-900/50 border border-white/5 p-2 rounded-3xl flex gap-2 mb-4";
+            controls.innerHTML = `
+                <button onclick="updateWeightVal(-0.1)" class="flex-1 py-4 rounded-2xl bg-black/40 hover:bg-zinc-800 text-zinc-400 text-3xl font-bold transition-colors">-</button>
+                <button onclick="updateWeightVal(0.1)" class="flex-1 py-4 rounded-2xl bg-black/40 hover:bg-zinc-800 text-white text-3xl font-bold transition-colors">+</button>
+            `;
+
+            const saveBtn = document.createElement('button');
+            saveBtn.className = "w-full bg-emerald-500 text-black font-extrabold py-4 rounded-2xl uppercase tracking-widest text-xs hover:bg-emerald-400 tap-active shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all";
+            saveBtn.innerText = "Zapisz Wagę";
+            saveBtn.onclick = saveBodyWeight;
+
+            const historyList = document.createElement('div');
+            historyList.className = "mt-8 space-y-2";
+            historyList.innerHTML = `<h3 class="text-zinc-500 text-[10px] font-bold uppercase mb-4 px-1 tracking-widest">Ostatnie Pomiary</h3>`;
+
+            const logs = [...appState.weightHistory].reverse();
+            if (logs.length === 0) historyList.innerHTML += `<div class="text-zinc-700 text-xs px-1">Brak pomiarów.</div>`;
+
+            logs.slice(0, 10).forEach(entry => {
+                historyList.innerHTML += `
+                    <div class="flex justify-between items-center p-4 bg-zinc-900/30 rounded-xl border border-white/5 text-sm">
+                        <span class="text-zinc-500 text-xs font-medium">${entry.date}</span>
+                        <span class="text-white font-mono font-bold text-lg">${entry.weight.toFixed(1)}</span>
+                    </div>
+                `;
+            });
+
+            wrapper.appendChild(display);
+            wrapper.appendChild(controls);
+            wrapper.appendChild(saveBtn);
+            wrapper.appendChild(historyList);
+            container.appendChild(wrapper);
+        }
+
+        function updateWeightVal(delta) {
+            appState.currentWeight = Math.round((appState.currentWeight + delta) * 10) / 10;
+            document.getElementById('bw-display').innerText = appState.currentWeight.toFixed(1);
+        }
+
+        function saveBodyWeight() {
+            const today = new Date().toLocaleDateString('pl-PL');
+            appState.weightHistory.push({ date: today, weight: appState.currentWeight });
+            router('body');
+        }
+
+        function renderSettings() {
+            pageTitle.innerText = "Ustawienia";
+            const div = document.createElement('div');
+            div.className = "space-y-6 fade-in";
+            div.innerHTML = `
+                <div class="bg-zinc-900/40 backdrop-blur-md p-6 rounded-3xl border border-white/5">
+                    <h3 class="text-white font-bold mb-2 text-lg">Progresja</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed mb-6">
+                        Automatyczne zwiększanie ciężaru o:
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <input type="range" min="100" max="110" step="0.5" value="${appState.progressionFactor * 100}" 
+                            class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                            oninput="appState.progressionFactor = this.value / 100; document.getElementById('prog-val').innerText = ((this.value - 100).toFixed(1) + '%')">
+                        <span class="font-mono text-emerald-400 font-bold text-xl w-16 text-right" id="prog-val">${((appState.progressionFactor - 1) * 100).toFixed(1)}%</span>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-900/40 backdrop-blur-md p-6 rounded-3xl border border-white/5">
+                    <h3 class="text-white font-bold mb-2 text-lg">Dane (JSON)</h3>
+                    <textarea class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-[10px] text-zinc-400 font-mono h-32 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none" readonly>${JSON.stringify(appState)}</textarea>
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        // --- 4. MODAL LOGIC ---
+        let currentModalExercise = null;
+        let activeTab = 'log';
+
+        function openModal(exerciseName) {
+            currentModalExercise = exerciseName;
+            activeTab = 'log';
+            const modal = document.getElementById('exercise-modal');
+            const content = document.getElementById('modal-content');
+            document.getElementById('modal-exercise-name').innerText = exerciseName;
+            const history = appState.logs[exerciseName] || [];
+            const last = history.length > 0 ? history[history.length - 1] : null;
+            document.getElementById('modal-last-weight').innerText = last ? `${last.weight}kg x ${last.reps}` : '--';
+            renderModalContent();
+            modal.classList.remove('hidden');
+            content.classList.remove('modal-exit-active');
+            content.classList.add('modal-enter-active');
+            setTimeout(() => { content.classList.remove('modal-enter', 'modal-enter-active'); }, 300);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('exercise-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.add('modal-exit-active');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                content.classList.remove('modal-exit-active');
+            }, 300);
+            if (appState.currentView === 'workout') renderWorkoutDay(appState.currentDayId);
+        }
+
+        function switchModalTab(tab) {
+            activeTab = tab;
+            renderModalContent();
+        }
+
+        function renderModalContent() {
+            const container = document.getElementById('modal-body-content');
+            const tabLog = document.getElementById('tab-log');
+            const tabHistory = document.getElementById('tab-history');
+
+            if (activeTab === 'log') {
+                tabLog.className = "flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-zinc-800 shadow-sm transition-all";
+                tabHistory.className = "flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-all";
+
+                const predData = getPrediction(currentModalExercise);
+                const suggestedWeight = predData ? predData.predicted : '';
+
+                container.innerHTML = `
+                    <div class="fade-in space-y-6 pt-2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-black/40 p-5 rounded-3xl border border-white/5 focus-within:border-emerald-500/50 transition-colors">
+                                <label class="block text-[10px] uppercase text-zinc-500 mb-2 font-bold tracking-wider">Ciężar (kg)</label>
+                                <input id="inp-weight" type="number" step="0.5" placeholder="0" value="${suggestedWeight}" class="w-full bg-transparent text-5xl font-bold text-white outline-none placeholder-zinc-800">
+                            </div>
+                            <div class="bg-black/40 p-5 rounded-3xl border border-white/5 focus-within:border-emerald-500/50 transition-colors">
+                                <label class="block text-[10px] uppercase text-zinc-500 mb-2 font-bold tracking-wider">Powtórzenia</label>
+                                <input id="inp-reps" type="number" placeholder="0" class="w-full bg-transparent text-5xl font-bold text-white outline-none placeholder-zinc-800">
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-500/5 p-5 rounded-2xl border border-emerald-500/10 flex items-start gap-4">
+                            <span class="material-symbols-outlined text-emerald-500 mt-1">auto_graph</span>
+                            <div>
+                                <p class="text-xs text-emerald-400 font-bold uppercase mb-1 tracking-wider">Sugestia</p>
+                                <p class="text-sm text-zinc-300 leading-relaxed">
+                                    ${predData ? `Ostatnio: ${predData.lastWeight}kg. Spróbuj <span class="text-white font-bold text-lg">${predData.predicted}kg</span>.` : 'Brak danych. Rozpocznij cykl.'}
+                                </p>
+                            </div>
+                        </div>
+
+                        <button onclick="commitLog()" class="w-full py-5 bg-white text-black font-extrabold text-sm uppercase tracking-widest rounded-2xl hover:bg-zinc-200 tap-active shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-all">
+                            Zapisz Serię
+                        </button>
+                    </div>
+                `;
+            } else {
+                tabHistory.className = "flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-zinc-800 shadow-sm transition-all";
+                tabLog.className = "flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-all";
+
+                const history = appState.logs[currentModalExercise] || [];
+                if (history.length === 0) {
+                    container.innerHTML = `<div class="text-center text-zinc-600 text-sm py-10 fade-in">Brak historii.</div>`;
+                } else {
+                    let html = `<div class="space-y-3 fade-in pt-2">`;
+                    const len = history.length;
+                    [...history].reverse().forEach((log, reversedIndex) => {
+                        const originalIndex = len - 1 - reversedIndex;
+                        html += `
+                            <div class="flex justify-between items-center p-5 bg-zinc-900/40 border border-white/5 rounded-2xl group">
+                                <span class="text-zinc-500 text-xs font-bold tracking-wide">${log.date}</span>
+                                <div class="flex items-center gap-5">
+                                    <div class="text-right">
+                                        <span class="text-white font-bold text-xl">${log.weight}</span> <span class="text-zinc-600 text-xs uppercase font-bold mr-1">kg</span>
+                                        <span class="text-zinc-400 text-xl">x ${log.reps}</span>
+                                    </div>
+                                    <button onclick="deleteLogEntry('${currentModalExercise}', ${originalIndex})" class="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-red-500 hover:bg-red-500/10 transition-colors">
+                                        <span class="material-symbols-outlined text-lg">delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                    container.innerHTML = html;
+                }
+            }
+        }
+
+        function commitLog() {
+            const w = document.getElementById('inp-weight').value;
+            const r = document.getElementById('inp-reps').value;
+            if (!w || !r) return alert("Wpisz ciężar i powtórzenia");
+            const today = new Date().toLocaleDateString('pl-PL');
+            if (!appState.logs[currentModalExercise]) appState.logs[currentModalExercise] = [];
+            appState.logs[currentModalExercise].push({ date: today, weight: parseFloat(w), reps: parseInt(r) });
+            switchModalTab('history');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            router('home');
+        });
+    </script>
+</body>
+
+</html>
