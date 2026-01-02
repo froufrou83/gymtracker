@@ -21,20 +21,24 @@
         rel="stylesheet">
 
     <style>
-        :root {
-            --safe-top: env(safe-area-inset-top);
-            --safe-bottom: env(safe-area-inset-bottom);
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            /* Prevent body scroll */
+            overscroll-behavior: none;
+            /* Prevent rubber-banding */
+            position: fixed;
+            /* Lock viewport on iOS */
+            inset: 0;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: #09090b;
-            /* Zinc 950 */
             color: #e4e4e7;
-            /* Zinc 200 */
             -webkit-tap-highlight-color: transparent;
-            overflow: hidden;
-            /* Prevent body scroll, handle in main */
         }
 
         /* Custom Scrollbar */
@@ -49,14 +53,14 @@
 
         /* Glassmorphism */
         .glass-nav {
-            background: rgba(9, 9, 11, 0.85);
+            background: rgba(9, 9, 11, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .glass-header {
-            background: rgba(9, 9, 11, 0.85);
+            background: rgba(9, 9, 11, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -168,8 +172,8 @@
             id="modal-content">
 
             <!-- Drag Handle -->
-            <div class="w-full flex justify-center pt-3 pb-1" onclick="closeModal()">
-                <div class="w-12 h-1.5 bg-zinc-700 rounded-full"></div>
+            <div class="w-full flex justify-center pt-3 pb-1" id="modal-handle" onclick="closeModal()">
+                <div class="w-12 h-1.5 bg-zinc-600 rounded-full"></div>
             </div>
 
             <!-- Modal Header -->
@@ -228,6 +232,27 @@
             currentDayId: null
         };
 
+        // --- PERSISTENCE ---
+        function loadData() {
+            const saved = localStorage.getItem('antigravity_gym_data');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    // Merge saved data with default structure to ensure compatibility
+                    appState = { ...appState, ...parsed };
+                } catch (e) {
+                    console.error("Failed to load data", e);
+                }
+            }
+        }
+
+        function saveData() {
+            localStorage.setItem('antigravity_gym_data', JSON.stringify(appState));
+        }
+
+        // Load immediately
+        loadData();
+
         // --- 2. LOGIC ---
         function getPrediction(exerciseName) {
             const history = appState.logs[exerciseName];
@@ -241,6 +266,7 @@
         function deleteLogEntry(exerciseName, originalIndex) {
             if (confirm('Usunąć ten wynik?')) {
                 appState.logs[exerciseName].splice(originalIndex, 1);
+                saveData(); // Save changes
                 renderModalContent();
                 const history = appState.logs[exerciseName] || [];
                 const last = history.length > 0 ? history[history.length - 1] : null;
@@ -253,6 +279,7 @@
             if (name && name.trim() !== "") {
                 if (!appState.exercises[dayId]) appState.exercises[dayId] = [];
                 appState.exercises[dayId].push(name.trim());
+                saveData(); // Save changes
                 renderWorkoutDay(dayId);
             }
         }
@@ -260,6 +287,7 @@
         function removeExerciseLogic(dayId, index) {
             if (confirm("Czy na pewno chcesz usunąć to ćwiczenie?")) {
                 appState.exercises[dayId].splice(index, 1);
+                saveData(); // Save changes
                 renderWorkoutDay(dayId);
             }
         }
@@ -424,6 +452,7 @@
         function saveBodyWeight() {
             const today = new Date().toLocaleDateString('pl-PL');
             appState.weightHistory.push({ date: today, weight: appState.currentWeight });
+            saveData(); // Save changes
             router('body');
         }
 
@@ -440,7 +469,7 @@
                     <div class="flex items-center gap-6">
                         <input type="range" min="100" max="110" step="0.5" value="${appState.progressionFactor * 100}" 
                             class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-                            oninput="appState.progressionFactor = this.value / 100; document.getElementById('prog-val').innerText = ((this.value - 100).toFixed(1) + '%')">
+                            oninput="appState.progressionFactor = this.value / 100; document.getElementById('prog-val').innerText = ((this.value - 100).toFixed(1) + '%'); saveData();">
                         <span class="font-mono text-emerald-400 font-bold text-xl w-16 text-right" id="prog-val">${((appState.progressionFactor - 1) * 100).toFixed(1)}%</span>
                     </div>
                 </div>
@@ -563,14 +592,64 @@
         }
 
         function commitLog() {
+            // Force keyboard close to prevent layout shifts
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+
             const w = document.getElementById('inp-weight').value;
             const r = document.getElementById('inp-reps').value;
             if (!w || !r) return alert("Wpisz ciężar i powtórzenia");
             const today = new Date().toLocaleDateString('pl-PL');
             if (!appState.logs[currentModalExercise]) appState.logs[currentModalExercise] = [];
             appState.logs[currentModalExercise].push({ date: today, weight: parseFloat(w), reps: parseInt(r) });
+            saveData(); // Save changes
             switchModalTab('history');
         }
+
+        // --- 5. SWIPE GESTURES ---
+        const modalContent = document.getElementById('modal-content');
+        const modalBody = document.getElementById('modal-body-content');
+        let touchStartY = 0;
+        let isDragging = false;
+
+        modalContent.addEventListener('touchstart', (e) => {
+            const isBody = e.target.closest('#modal-body-content');
+            // Allow drag if touching handle/header OR if body is at top
+            if (isBody && modalBody.scrollTop > 0) return;
+
+            touchStartY = e.touches[0].clientY;
+            isDragging = true;
+            modalContent.style.transition = 'none';
+        }, { passive: true });
+
+        modalContent.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const currentY = e.touches[0].clientY;
+            const delta = currentY - touchStartY;
+
+            // Only move if dragging down
+            if (delta > 0) {
+                e.preventDefault(); // Block native scroll
+                modalContent.style.transform = `translateY(${delta}px)`;
+            }
+        }, { passive: false });
+
+        modalContent.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            modalContent.style.transition = '';
+
+            const currentY = e.changedTouches[0].clientY;
+            const delta = currentY - touchStartY;
+
+            if (delta > 100) {
+                modalContent.style.transform = ''; // Clear inline so class takes over
+                closeModal();
+            } else {
+                modalContent.style.transform = ''; // Snap back
+            }
+        });
 
         window.addEventListener('DOMContentLoaded', () => {
             router('home');
