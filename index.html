@@ -16,7 +16,7 @@
 
     <!-- Fonts & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet">
 
@@ -26,11 +26,8 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            /* Prevent body scroll */
             overscroll-behavior: none;
-            /* Prevent rubber-banding */
             position: fixed;
-            /* Lock viewport on iOS */
             inset: 0;
         }
 
@@ -41,7 +38,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Custom Scrollbar */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -51,7 +47,6 @@
             scrollbar-width: none;
         }
 
-        /* Glassmorphism */
         .glass-nav {
             background: rgba(9, 9, 11, 0.9);
             backdrop-filter: blur(20px);
@@ -66,7 +61,6 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Animations */
         .tap-active:active {
             transform: scale(0.97);
             opacity: 0.9;
@@ -89,7 +83,6 @@
             animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Modal Transitions */
         .modal-enter-active {
             transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
             transform: translateY(0);
@@ -104,16 +97,1323 @@
             transform: translateY(100%);
         }
 
-        /* Utilities */
-        .safe-pt {
-            padding-top: max(1rem, var(--safe-top));
+        @keyframes dialogIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        .safe-pb {
-            padding-bottom: max(5rem, calc(5rem + var(--safe-bottom)));
+        .dialog-enter {
+            animation: dialogIn 0.2s ease-out forwards;
         }
 
-        /* Nav height + safe area */
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+    </style>
+    <style>
+        *,
+        ::before,
+        ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb
+        }
+
+        ::after,
+        ::before {
+            --tw-content: ''
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            margin: 0;
+            line-height: inherit
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
+
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        input:where([type=button]),
+        input:where([type=reset]),
+        input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none
+        }
+
+        :-moz-focusring {
+            outline: auto
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0
+        }
+
+        legend {
+            padding: 0
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        dialog {
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af
+        }
+
+        [role=button],
+        button {
+            cursor: pointer
+        }
+
+        :disabled {
+            cursor: default
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto
+        }
+
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none
+        }
+
+        .fixed {
+            position: fixed
+        }
+
+        .absolute {
+            position: absolute
+        }
+
+        .relative {
+            position: relative
+        }
+
+        .inset-0 {
+            inset: 0px
+        }
+
+        .bottom-0 {
+            bottom: 0px
+        }
+
+        .left-0 {
+            left: 0px
+        }
+
+        .top-0 {
+            top: 0px
+        }
+
+        .z-10 {
+            z-index: 10
+        }
+
+        .z-30 {
+            z-index: 30
+        }
+
+        .z-40 {
+            z-index: 40
+        }
+
+        .z-50 {
+            z-index: 50
+        }
+
+        .z-\[60\] {
+            z-index: 60
+        }
+
+        .mb-1 {
+            margin-bottom: 0.25rem
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem
+        }
+
+        .-mr-2 {
+            margin-right: -0.5rem
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+
+        .mt-3 {
+            margin-top: 0.75rem
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem
+        }
+
+        .mt-4 {
+            margin-top: 1rem
+        }
+
+        .mt-8 {
+            margin-top: 2rem
+        }
+
+        .mr-1 {
+            margin-right: 0.25rem
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+
+        .block {
+            display: block
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .grid {
+            display: grid
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .h-1\.5 {
+            height: 0.375rem
+        }
+
+        .h-\[90vh\] {
+            height: 90vh
+        }
+
+        .h-\[calc\(4rem\+env\(safe-area-inset-bottom\)\)\] {
+            height: calc(4rem + env(safe-area-inset-bottom))
+        }
+
+        .h-screen {
+            height: 100vh
+        }
+
+        .h-10 {
+            height: 2.5rem
+        }
+
+        .h-12 {
+            height: 3rem
+        }
+
+        .h-2 {
+            height: 0.5rem
+        }
+
+        .h-full {
+            height: 100%
+        }
+
+        .w-12 {
+            width: 3rem
+        }
+
+        .w-16 {
+            width: 4rem
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .w-screen {
+            width: 100vw
+        }
+
+        .w-10 {
+            width: 2.5rem
+        }
+
+        .w-28 {
+            width: 7rem
+        }
+
+        .max-w-sm {
+            max-width: 24rem
+        }
+
+        .flex-1 {
+            flex: 1 1 0%
+        }
+
+        .scale-75 {
+            --tw-scale-x: .75;
+            --tw-scale-y: .75;
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
+
+        .transform {
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
+
+        .cursor-pointer {
+            cursor: pointer
+        }
+
+        .appearance-none {
+            -webkit-appearance: none;
+            appearance: none
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .items-start {
+            align-items: flex-start
+        }
+
+        .items-end {
+            align-items: flex-end
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .justify-center {
+            justify-content: center
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .justify-around {
+            justify-content: space-around
+        }
+
+        .gap-1 {
+            gap: 0.25rem
+        }
+
+        .gap-4 {
+            gap: 1rem
+        }
+
+        .gap-2 {
+            gap: 0.5rem
+        }
+
+        .gap-8 {
+            gap: 2rem
+        }
+
+        .gap-3 {
+            gap: 0.75rem
+        }
+
+        .gap-5 {
+            gap: 1.25rem
+        }
+
+        .space-y-2> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+        }
+
+        .space-y-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(0.75rem * var(--tw-space-y-reverse))
+        }
+
+        .space-y-6> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
+        }
+
+        .overflow-hidden {
+            overflow: hidden
+        }
+
+        .overflow-y-auto {
+            overflow-y: auto
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem
+        }
+
+        .rounded-full {
+            border-radius: 9999px
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem
+        }
+
+        .rounded-3xl {
+            border-radius: 1.5rem
+        }
+
+        .rounded {
+            border-radius: 0.25rem
+        }
+
+        .rounded-md {
+            border-radius: 0.375rem
+        }
+
+        .rounded-t-\[2rem\] {
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem
+        }
+
+        .border {
+            border-width: 1px
+        }
+
+        .border-t {
+            border-top-width: 1px
+        }
+
+        .border-l {
+            border-left-width: 1px
+        }
+
+        .border-dashed {
+            border-style: dashed
+        }
+
+        .border-zinc-800 {
+            --tw-border-opacity: 1;
+            border-color: rgb(39 39 42 / var(--tw-border-opacity, 1))
+        }
+
+        .border-zinc-800\/50 {
+            border-color: rgb(39 39 42 / 0.5)
+        }
+
+        .border-emerald-500\/20 {
+            border-color: rgb(16 185 129 / 0.2)
+        }
+
+        .border-emerald-500\/30 {
+            border-color: rgb(16 185 129 / 0.3)
+        }
+
+        .border-white\/5 {
+            border-color: rgb(255 255 255 / 0.05)
+        }
+
+        .border-zinc-700 {
+            --tw-border-opacity: 1;
+            border-color: rgb(63 63 70 / var(--tw-border-opacity, 1))
+        }
+
+        .border-emerald-500\/10 {
+            border-color: rgb(16 185 129 / 0.1)
+        }
+
+        .bg-\[\#121214\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(18 18 20 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-black\/80 {
+            background-color: rgb(0 0 0 / 0.8)
+        }
+
+        .bg-zinc-600 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(82 82 91 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-zinc-800 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(39 39 42 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-zinc-900 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(24 24 27 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-zinc-900\/50 {
+            background-color: rgb(24 24 27 / 0.5)
+        }
+
+        .bg-zinc-950 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(9 9 11 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-emerald-500\/10 {
+            background-color: rgb(16 185 129 / 0.1)
+        }
+
+        .bg-zinc-800\/50 {
+            background-color: rgb(39 39 42 / 0.5)
+        }
+
+        .bg-zinc-800\/80 {
+            background-color: rgb(39 39 42 / 0.8)
+        }
+
+        .bg-zinc-900\/40 {
+            background-color: rgb(24 24 27 / 0.4)
+        }
+
+        .bg-black\/40 {
+            background-color: rgb(0 0 0 / 0.4)
+        }
+
+        .bg-emerald-500\/5 {
+            background-color: rgb(16 185 129 / 0.05)
+        }
+
+        .bg-transparent {
+            background-color: transparent
+        }
+
+        .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-black\/50 {
+            background-color: rgb(0 0 0 / 0.5)
+        }
+
+        .bg-emerald-500 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-zinc-900\/30 {
+            background-color: rgb(24 24 27 / 0.3)
+        }
+
+        .bg-red-500 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1))
+        }
+
+        .p-1 {
+            padding: 0.25rem
+        }
+
+        .p-2 {
+            padding: 0.5rem
+        }
+
+        .p-4 {
+            padding: 1rem
+        }
+
+        .p-6 {
+            padding: 1.5rem
+        }
+
+        .p-5 {
+            padding: 1.25rem
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .py-2\.5 {
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem
+        }
+
+        .px-1 {
+            padding-left: 0.25rem;
+            padding-right: 0.25rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem
+        }
+
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem
+        }
+
+        .py-5 {
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem
+        }
+
+        .py-10 {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem
+        }
+
+        .pb-1 {
+            padding-bottom: 0.25rem
+        }
+
+        .pb-4 {
+            padding-bottom: 1rem
+        }
+
+        .pb-8 {
+            padding-bottom: 2rem
+        }
+
+        .pb-\[calc\(env\(safe-area-inset-bottom\)\+6rem\)\] {
+            padding-bottom: calc(env(safe-area-inset-bottom) + 6rem)
+        }
+
+        .pb-\[env\(safe-area-inset-bottom\)\] {
+            padding-bottom: env(safe-area-inset-bottom)
+        }
+
+        .pt-2 {
+            padding-top: 0.5rem
+        }
+
+        .pt-3 {
+            padding-top: 0.75rem
+        }
+
+        .pt-\[calc\(env\(safe-area-inset-top\)\+1rem\)\] {
+            padding-top: calc(env(safe-area-inset-top) + 1rem)
+        }
+
+        .pt-\[calc\(env\(safe-area-inset-top\)\+6rem\)\] {
+            padding-top: calc(env(safe-area-inset-top) + 6rem)
+        }
+
+        .pb-20 {
+            padding-bottom: 5rem
+        }
+
+        .pr-10 {
+            padding-right: 2.5rem
+        }
+
+        .text-right {
+            text-align: right
+        }
+
+        .font-mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem
+        }
+
+        .text-\[10px\] {
+            font-size: 10px
+        }
+
+        .text-\[28px\] {
+            font-size: 28px
+        }
+
+        .text-\[9px\] {
+            font-size: 9px
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+            line-height: 1rem
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem
+        }
+
+        .text-\[6rem\] {
+            font-size: 6rem
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem
+        }
+
+        .font-bold {
+            font-weight: 700
+        }
+
+        .font-extrabold {
+            font-weight: 800
+        }
+
+        .font-medium {
+            font-weight: 500
+        }
+
+        .uppercase {
+            text-transform: uppercase
+        }
+
+        .italic {
+            font-style: italic
+        }
+
+        .tabular-nums {
+            --tw-numeric-spacing: tabular-nums;
+            font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)
+        }
+
+        .leading-none {
+            line-height: 1
+        }
+
+        .leading-tight {
+            line-height: 1.25
+        }
+
+        .leading-relaxed {
+            line-height: 1.625
+        }
+
+        .tracking-\[0\.25em\] {
+            letter-spacing: 0.25em
+        }
+
+        .tracking-tight {
+            letter-spacing: -0.025em
+        }
+
+        .tracking-wider {
+            letter-spacing: 0.05em
+        }
+
+        .tracking-widest {
+            letter-spacing: 0.1em
+        }
+
+        .tracking-\[0\.3em\] {
+            letter-spacing: 0.3em
+        }
+
+        .tracking-tighter {
+            letter-spacing: -0.05em
+        }
+
+        .tracking-wide {
+            letter-spacing: 0.025em
+        }
+
+        .text-emerald-400 {
+            --tw-text-opacity: 1;
+            color: rgb(52 211 153 / var(--tw-text-opacity, 1))
+        }
+
+        .text-emerald-500 {
+            --tw-text-opacity: 1;
+            color: rgb(16 185 129 / var(--tw-text-opacity, 1))
+        }
+
+        .text-white {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-200 {
+            --tw-text-opacity: 1;
+            color: rgb(228 228 231 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-400 {
+            --tw-text-opacity: 1;
+            color: rgb(161 161 170 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-500 {
+            --tw-text-opacity: 1;
+            color: rgb(113 113 122 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-600 {
+            --tw-text-opacity: 1;
+            color: rgb(82 82 91 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-700 {
+            --tw-text-opacity: 1;
+            color: rgb(63 63 70 / var(--tw-text-opacity, 1))
+        }
+
+        .text-red-400 {
+            --tw-text-opacity: 1;
+            color: rgb(248 113 113 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-300 {
+            --tw-text-opacity: 1;
+            color: rgb(212 212 216 / var(--tw-text-opacity, 1))
+        }
+
+        .text-zinc-100 {
+            --tw-text-opacity: 1;
+            color: rgb(244 244 245 / var(--tw-text-opacity, 1))
+        }
+
+        .text-black {
+            --tw-text-opacity: 1;
+            color: rgb(0 0 0 / var(--tw-text-opacity, 1))
+        }
+
+        .placeholder-zinc-600::placeholder {
+            --tw-placeholder-opacity: 1;
+            color: rgb(82 82 91 / var(--tw-placeholder-opacity, 1))
+        }
+
+        .placeholder-zinc-800::placeholder {
+            --tw-placeholder-opacity: 1;
+            color: rgb(39 39 42 / var(--tw-placeholder-opacity, 1))
+        }
+
+        .accent-emerald-500 {
+            accent-color: #10b981
+        }
+
+        .shadow-2xl {
+            --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-sm {
+            --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_15px_rgba\(16\2c 185\2c 129\2c 0\.1\)\] {
+            --tw-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+            --tw-shadow-colored: 0 0 15px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_25px_rgba\(255\2c 255\2c 255\2c 0\.1\)\] {
+            --tw-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+            --tw-shadow-colored: 0 0 25px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-\[0_0_20px_rgba\(16\2c 185\2c 129\2c 0\.3\)\] {
+            --tw-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .outline-none {
+            outline: 2px solid transparent;
+            outline-offset: 2px
+        }
+
+        .blur-3xl {
+            --tw-blur: blur(64px);
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+        }
+
+        .drop-shadow-\[0_0_8px_rgba\(16\2c 185\2c 129\2c 0\.5\)\] {
+            --tw-drop-shadow: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+        }
+
+        .drop-shadow-2xl {
+            --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+        }
+
+        .backdrop-blur-sm {
+            --tw-backdrop-blur: blur(4px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+        }
+
+        .backdrop-blur-md {
+            --tw-backdrop-blur: blur(12px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+        }
+
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .transition-colors {
+            transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .duration-200 {
+            transition-duration: 200ms
+        }
+
+        .duration-300 {
+            transition-duration: 300ms
+        }
+
+        .focus-within\:border-emerald-500\/50:focus-within {
+            border-color: rgb(16 185 129 / 0.5)
+        }
+
+        .hover\:border-transparent:hover {
+            border-color: transparent
+        }
+
+        .hover\:border-emerald-500:hover {
+            --tw-border-opacity: 1;
+            border-color: rgb(16 185 129 / var(--tw-border-opacity, 1))
+        }
+
+        .hover\:bg-emerald-500:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-zinc-700:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(63 63 70 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-red-500\/20:hover {
+            background-color: rgb(239 68 68 / 0.2)
+        }
+
+        .hover\:bg-zinc-200:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(228 228 231 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-emerald-400:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(52 211 153 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-zinc-800:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(39 39 42 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-red-500\/10:hover {
+            background-color: rgb(239 68 68 / 0.1)
+        }
+
+        .hover\:bg-red-400:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(248 113 113 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:text-zinc-300:hover {
+            --tw-text-opacity: 1;
+            color: rgb(212 212 216 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-black:hover {
+            --tw-text-opacity: 1;
+            color: rgb(0 0 0 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-emerald-500:hover {
+            --tw-text-opacity: 1;
+            color: rgb(16 185 129 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-white:hover {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-red-500:hover {
+            --tw-text-opacity: 1;
+            color: rgb(239 68 68 / var(--tw-text-opacity, 1))
+        }
+
+        .focus\:border-emerald-500:focus {
+            --tw-border-opacity: 1;
+            border-color: rgb(16 185 129 / var(--tw-border-opacity, 1))
+        }
+
+        .group.active-nav .group-\[\.active-nav\]\:text-emerald-400 {
+            --tw-text-opacity: 1;
+            color: rgb(52 211 153 / var(--tw-text-opacity, 1))
+        }
+
+        .group.active-nav .group-\[\.active-nav\]\:text-white {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        @media (min-width: 640px) {
+            .sm\:w-96 {
+                width: 24rem
+            }
+
+            .sm\:items-center {
+                align-items: center
+            }
+
+            .sm\:rounded-\[2rem\] {
+                border-radius: 2rem
+            }
+        }
     </style>
 </head>
 
@@ -128,105 +1428,199 @@
                 Antigravity</h1>
             <h2 class="text-2xl font-extrabold text-white tracking-tight leading-none" id="page-title">Twój Plan</h2>
         </div>
-        <div id="header-action"></div>
+        <div id="header-action"><button onclick="router('plans')"
+                class="w-10 h-10 rounded-full bg-zinc-800/50 hover:bg-zinc-700 flex items-center justify-center transition-colors"><span
+                    class="material-symbols-outlined text-zinc-400">more_vert</span></button></div>
     </header>
 
     <!-- Main Content -->
     <main
         class="flex-1 overflow-y-auto no-scrollbar relative w-full pt-[calc(env(safe-area-inset-top)+6rem)] pb-[calc(env(safe-area-inset-bottom)+6rem)] px-4"
         id="app-container">
-        <!-- Content injected by JS -->
+        <div class="flex flex-col gap-4 fade-in pb-20">
+            <div class="p-5 rounded-3xl border bg-zinc-900/40 border-white/5 flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Poniedziałek</p>
+                    <h3 class="text-zinc-600 font-medium italic">Dzień wolny</h3>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-zinc-800/50 flex items-center justify-center"><span
+                        class="material-symbols-outlined text-zinc-700 text-lg">remove</span></div>
+            </div>
+            <div class="p-5 rounded-3xl border bg-zinc-900/40 border-white/5 flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Wtorek</p>
+                    <h3 class="text-white font-bold text-lg">Push</h3>
+                </div><button onclick="router('workout', 'push')"
+                    class="w-12 h-12 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-black flex items-center justify-center transition-all border border-emerald-500/20 hover:border-transparent"><span
+                        class="material-symbols-outlined">play_arrow</span></button>
+            </div>
+            <div class="p-5 rounded-3xl border bg-zinc-900/40 border-white/5 flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Środa</p>
+                    <h3 class="text-white font-bold text-lg">Pull</h3>
+                </div><button onclick="router('workout', 'pull')"
+                    class="w-12 h-12 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-black flex items-center justify-center transition-all border border-emerald-500/20 hover:border-transparent"><span
+                        class="material-symbols-outlined">play_arrow</span></button>
+            </div>
+            <div class="p-5 rounded-3xl border bg-zinc-900/40 border-white/5 flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Czwartek</p>
+                    <h3 class="text-white font-bold text-lg">Legs</h3>
+                </div><button onclick="router('workout', 'legs')"
+                    class="w-12 h-12 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-black flex items-center justify-center transition-all border border-emerald-500/20 hover:border-transparent"><span
+                        class="material-symbols-outlined">play_arrow</span></button>
+            </div>
+            <div class="p-5 rounded-3xl border bg-zinc-900/40 border-white/5 flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Piątek</p>
+                    <h3 class="text-zinc-600 font-medium italic">Dzień wolny</h3>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-zinc-800/50 flex items-center justify-center"><span
+                        class="material-symbols-outlined text-zinc-700 text-lg">remove</span></div>
+            </div>
+            <div class="p-5 rounded-3xl border bg-zinc-900/40 border-white/5 flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">Sobota</p>
+                    <h3 class="text-white font-bold text-lg">Upper</h3>
+                </div><button onclick="router('workout', 'upper')"
+                    class="w-12 h-12 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-black flex items-center justify-center transition-all border border-emerald-500/20 hover:border-transparent"><span
+                        class="material-symbols-outlined">play_arrow</span></button>
+            </div>
+            <div
+                class="p-5 rounded-3xl border bg-zinc-800/80 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)] flex items-center justify-between">
+                <div class="flex-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-1">Niedziela</p>
+                    <h3 class="text-white font-bold text-lg">Lower</h3>
+                </div><button onclick="router('workout', 'lower')"
+                    class="w-12 h-12 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-black flex items-center justify-center transition-all border border-emerald-500/20 hover:border-transparent"><span
+                        class="material-symbols-outlined">play_arrow</span></button>
+            </div>
+        </div>
     </main>
 
     <!-- Bottom Navigation -->
     <nav
         class="fixed bottom-0 left-0 w-full z-40 glass-nav pb-[env(safe-area-inset-bottom)] pt-2 px-6 flex justify-around items-center h-[calc(4rem+env(safe-area-inset-bottom))]">
         <button
-            class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group active-nav w-16"
+            class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group w-16 active-nav"
             onclick="router('home')">
             <span
-                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 group-[.active-nav]:drop-shadow-[0_0_10px_rgba(52,211,153,0.6)] transition-all">fitness_center</span>
+                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 transition-all">fitness_center</span>
             <span class="text-[9px] uppercase tracking-widest font-bold group-[.active-nav]:text-white">Trening</span>
         </button>
         <button
             class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group w-16"
             onclick="router('body')">
             <span
-                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 group-[.active-nav]:drop-shadow-[0_0_10px_rgba(52,211,153,0.6)] transition-all">monitor_weight</span>
+                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 transition-all">monitor_weight</span>
             <span class="text-[9px] uppercase tracking-widest font-bold group-[.active-nav]:text-white">Waga</span>
-        </button>
-        <button
-            class="flex flex-col items-center gap-1 p-2 text-zinc-500 transition-all duration-200 tap-active group w-16"
-            onclick="router('settings')">
-            <span
-                class="material-symbols-outlined text-[28px] group-[.active-nav]:text-emerald-400 group-[.active-nav]:drop-shadow-[0_0_10px_rgba(52,211,153,0.6)] transition-all">calculate</span>
-            <span class="text-[9px] uppercase tracking-widest font-bold group-[.active-nav]:text-white">Opcje</span>
         </button>
     </nav>
 
-    <!-- Workout/Exercise Modal -->
-    <div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center"
+    <!-- Exercise Modal -->
+    <div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center hidden"
         id="exercise-modal">
         <div class="absolute inset-0" onclick="closeModal()"></div>
-        <div class="bg-[#121214] border-t border-zinc-800 w-full sm:w-96 rounded-t-[2rem] sm:rounded-[2rem] shadow-2xl relative z-10 modal-enter h-[90vh] flex flex-col"
-            id="modal-content">
-
-            <!-- Drag Handle -->
+        <div class="bg-[#121214] border-t border-zinc-800 w-full sm:w-96 rounded-t-[2rem] sm:rounded-[2rem] shadow-2xl relative z-10 h-[90vh] flex flex-col"
+            id="modal-content" style="">
             <div class="w-full flex justify-center pt-3 pb-1" id="modal-handle" onclick="closeModal()">
                 <div class="w-12 h-1.5 bg-zinc-600 rounded-full"></div>
             </div>
-
-            <!-- Modal Header -->
             <div class="px-6 pb-4 pt-2 flex justify-between items-start">
                 <div>
-                    <h3 class="text-2xl font-bold text-white tracking-tight" id="modal-exercise-name">Nazwa</h3>
+                    <h3 class="text-2xl font-bold text-white tracking-tight" id="modal-exercise-name">Wyciskanie Leżąc
+                    </h3>
                     <p class="text-xs text-zinc-400 mt-1 font-medium">Ostatnio: <span class="text-emerald-400 font-mono"
                             id="modal-last-weight">--</span></p>
                 </div>
             </div>
-
-            <!-- Tab Switcher -->
             <div class="px-6 pb-4">
                 <div class="flex p-1 bg-zinc-900/50 rounded-xl border border-zinc-800/50">
                     <button
-                        class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-zinc-800 shadow-sm transition-all"
+                        class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-all"
                         id="tab-log" onclick="switchModalTab('log')">Zapisz</button>
                     <button
-                        class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-all"
+                        class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-zinc-800 shadow-sm transition-all"
                         id="tab-history" onclick="switchModalTab('history')">Historia</button>
                 </div>
             </div>
-
-            <!-- Scrollable Content -->
             <div class="flex-1 overflow-y-auto px-6 pb-8" id="modal-body-content">
-                <!-- Injected content -->
+                <div class="space-y-3 fade-in pt-2">
+                    <div
+                        class="flex justify-between items-center p-5 bg-zinc-900/40 border border-white/5 rounded-2xl group">
+                        <span class="text-zinc-500 text-xs font-bold tracking-wide">4.01.2026</span>
+                        <div class="flex items-center gap-5">
+                            <div class="text-right"><span class="text-white font-bold text-xl">59</span> <span
+                                    class="text-zinc-600 text-xs uppercase font-bold mr-1">kg</span><span
+                                    class="text-zinc-400 text-xl">x 5</span></div><button
+                                onclick="deleteLogEntry('Wyciskanie Leżąc', 2)"
+                                class="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-red-500 hover:bg-red-500/10 transition-colors"><span
+                                    class="material-symbols-outlined text-lg">delete</span></button>
+                        </div>
+                    </div>
+                    <div
+                        class="flex justify-between items-center p-5 bg-zinc-900/40 border border-white/5 rounded-2xl group">
+                        <span class="text-zinc-500 text-xs font-bold tracking-wide">4.01.2026</span>
+                        <div class="flex items-center gap-5">
+                            <div class="text-right"><span class="text-white font-bold text-xl">57</span> <span
+                                    class="text-zinc-600 text-xs uppercase font-bold mr-1">kg</span><span
+                                    class="text-zinc-400 text-xl">x 5</span></div><button
+                                onclick="deleteLogEntry('Wyciskanie Leżąc', 1)"
+                                class="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-red-500 hover:bg-red-500/10 transition-colors"><span
+                                    class="material-symbols-outlined text-lg">delete</span></button>
+                        </div>
+                    </div>
+                    <div
+                        class="flex justify-between items-center p-5 bg-zinc-900/40 border border-white/5 rounded-2xl group">
+                        <span class="text-zinc-500 text-xs font-bold tracking-wide">4.01.2026</span>
+                        <div class="flex items-center gap-5">
+                            <div class="text-right"><span class="text-white font-bold text-xl">55</span> <span
+                                    class="text-zinc-600 text-xs uppercase font-bold mr-1">kg</span><span
+                                    class="text-zinc-400 text-xl">x 5</span></div><button
+                                onclick="deleteLogEntry('Wyciskanie Leżąc', 0)"
+                                class="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-red-500 hover:bg-red-500/10 transition-colors"><span
+                                    class="material-symbols-outlined text-lg">delete</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Dialog -->
+    <div class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden"
+        id="custom-dialog">
+        <div class="bg-zinc-900 border border-zinc-800 w-full max-w-sm rounded-2xl shadow-2xl dialog-enter"
+            id="dialog-content">
+            <div class="p-6" id="dialog-body">
+                <h3 class="text-lg font-bold text-white mb-2">Usuń Plan</h3>
+                <p class="text-zinc-400 text-sm mb-6">Czy na pewno chcesz usunąć plan "Upper"? To nieodwracalne.</p>
+                <div class="flex gap-3"><button onclick="closeDialog()"
+                        class="flex-1 py-3 rounded-xl bg-zinc-800 text-zinc-400 font-bold text-sm hover:bg-zinc-700 transition-colors">Anuluj</button><button
+                        onclick="confirmDialog()"
+                        class="flex-1 py-3 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-400 transition-colors">Usuń</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         // --- 1. STATE & DATA ---
-        const defaultSplits = [
-            { id: 'push', name: 'Push', sub: 'Klatka / Barki / Triceps' },
-            { id: 'pull', name: 'Pull', sub: 'Plecy / Biceps / Tył' },
-            { id: 'legs', name: 'Legs', sub: 'Nogi / Łydki' },
-            { id: 'upper', name: 'Upper', sub: 'Góra Siłowo' },
-            { id: 'lower', name: 'Lower', sub: 'Dół Siłowo' },
+        const defaultPlans = [
+            { id: 'push', name: 'Push', exercises: ['Wyciskanie Leżąc', 'Wyciskanie Żołnierskie', 'Wznosy Bokiem'] },
+            { id: 'pull', name: 'Pull', exercises: ['Martwy Ciąg', 'Podciąganie', 'Wiosłowanie'] },
+            { id: 'legs', name: 'Legs', exercises: ['Przysiady', 'Wypychanie Nóg', 'Wykroki'] },
+            { id: 'upper', name: 'Upper', exercises: ['Wyciskanie Skos', 'Wiosłowanie Półsztangą', 'Dipsy'] },
+            { id: 'lower', name: 'Lower', exercises: ['RDL', 'Przysiady Bułgarskie', 'Uginanie Nóg'] }
         ];
-
-        const initialExercises = {
-            'push': ['Wyciskanie Leżąc', 'Wyciskanie Żołnierskie', 'Wznosy Bokiem'],
-            'pull': ['Martwy Ciąg', 'Podciąganie', 'Wiosłowanie'],
-            'legs': ['Przysiady', 'Wypychanie Nóg', 'Wykroki'],
-            'upper': ['Wyciskanie Skos', 'Wiosłowanie Półsztangą', 'Dipsy'],
-            'lower': ['RDL', 'Przysiady Bułgarskie', 'Uginanie Nóg']
-        };
 
         let appState = {
             currentWeight: 70,
             weightHistory: [],
             logs: {},
-            exercises: JSON.parse(JSON.stringify(initialExercises)),
+            plans: [],
+            schedule: {},
+            seatSettings: {},
             progressionFactor: 1.025,
             currentView: 'home',
             currentDayId: null
@@ -238,58 +1632,170 @@
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
-                    // Merge saved data with default structure to ensure compatibility
                     appState = { ...appState, ...parsed };
+                    migrateData();
                 } catch (e) {
                     console.error("Failed to load data", e);
+                    initializeDefaultPlans();
+                }
+            } else {
+                initializeDefaultPlans();
+            }
+        }
+
+        function migrateData() {
+            if (appState.plans.length === 0) {
+                if (appState.exercises && Object.keys(appState.exercises).length > 0) {
+                    Object.keys(appState.exercises).forEach(dayId => {
+                        const existing = defaultPlans.find(p => p.id === dayId);
+                        appState.plans.push({
+                            id: dayId,
+                            name: existing ? existing.name : dayId,
+                            exercises: appState.exercises[dayId] || []
+                        });
+                    });
+                    appState.schedule = { 1: 'push', 2: 'pull', 3: 'legs', 4: 'upper', 5: 'lower' };
+                    delete appState.exercises;
+                    saveData();
+                } else {
+                    initializeDefaultPlans();
                 }
             }
+        }
+
+        function initializeDefaultPlans() {
+            appState.plans = defaultPlans.map(p => ({ ...p }));
+            appState.schedule = { 1: 'push', 2: 'pull', 3: 'legs', 4: 'upper', 5: 'lower' };
+            saveData();
         }
 
         function saveData() {
             localStorage.setItem('antigravity_gym_data', JSON.stringify(appState));
         }
 
-        // Load immediately
         loadData();
+
+        // --- CUSTOM DIALOG SYSTEM ---
+        function showDialog(content) {
+            const dialog = document.getElementById('custom-dialog');
+            const body = document.getElementById('dialog-body');
+            body.innerHTML = content;
+            dialog.classList.remove('hidden');
+        }
+
+        function closeDialog() {
+            document.getElementById('custom-dialog').classList.add('hidden');
+        }
+
+        function showInputDialog(title, placeholder, defaultValue, onConfirm) {
+            showDialog(
+                '<h3 class="text-lg font-bold text-white mb-4">' + title + '</h3>' +
+                '<input type="text" id="dialog-input" placeholder="' + placeholder + '" value="' + (defaultValue || '') + '" class="w-full bg-black/50 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-600 outline-none focus:border-emerald-500 transition-colors mb-4">' +
+                '<div class="flex gap-3">' +
+                '<button onclick="closeDialog()" class="flex-1 py-3 rounded-xl bg-zinc-800 text-zinc-400 font-bold text-sm hover:bg-zinc-700 transition-colors">Anuluj</button>' +
+                '<button onclick="confirmInputDialog()" class="flex-1 py-3 rounded-xl bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 transition-colors">OK</button>' +
+                '</div>'
+            );
+            document.getElementById('dialog-input').focus();
+            window.dialogCallback = onConfirm;
+        }
+
+        function confirmInputDialog() {
+            const value = document.getElementById('dialog-input').value;
+            closeDialog();
+            if (window.dialogCallback && value && value.trim()) {
+                window.dialogCallback(value.trim());
+            }
+        }
+
+        function showConfirmDialog(title, message, onConfirm) {
+            showDialog(
+                '<h3 class="text-lg font-bold text-white mb-2">' + title + '</h3>' +
+                '<p class="text-zinc-400 text-sm mb-6">' + message + '</p>' +
+                '<div class="flex gap-3">' +
+                '<button onclick="closeDialog()" class="flex-1 py-3 rounded-xl bg-zinc-800 text-zinc-400 font-bold text-sm hover:bg-zinc-700 transition-colors">Anuluj</button>' +
+                '<button onclick="confirmDialog()" class="flex-1 py-3 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-400 transition-colors">Usuń</button>' +
+                '</div>'
+            );
+            window.dialogCallback = onConfirm;
+        }
+
+        function confirmDialog() {
+            closeDialog();
+            if (window.dialogCallback) window.dialogCallback();
+        }
+
+        // --- PLAN MANAGEMENT ---
+        function createNewPlan() {
+            showInputDialog('Nowy Plan', 'Nazwa planu...', '', function (name) {
+                appState.plans.push({ id: 'plan_' + Date.now(), name: name, exercises: [] });
+                saveData();
+                router('plans');
+            });
+        }
+
+        function deletePlan(planId) {
+            const plan = appState.plans.find(p => p.id === planId);
+            showConfirmDialog('Usuń Plan', 'Czy na pewno chcesz usunąć plan "' + plan.name + '"? To nieodwracalne.', function () {
+                appState.plans = appState.plans.filter(p => p.id !== planId);
+                for (const day in appState.schedule) {
+                    if (appState.schedule[day] === planId) delete appState.schedule[day];
+                }
+                saveData();
+                router('plans');
+            });
+        }
+
+        function editPlanName(planId) {
+            const plan = appState.plans.find(p => p.id === planId);
+            if (plan) {
+                showInputDialog('Zmień Nazwę', 'Nowa nazwa...', plan.name, function (newName) {
+                    plan.name = newName;
+                    saveData();
+                    router('plans');
+                });
+            }
+        }
 
         // --- 2. LOGIC ---
         function getPrediction(exerciseName) {
             const history = appState.logs[exerciseName];
             if (!history || history.length === 0) return null;
-            const lastSession = history[history.length - 1];
-            let rawPrediction = lastSession.weight * appState.progressionFactor;
-            let prediction = Math.round(rawPrediction * 2) / 2;
-            return { lastWeight: lastSession.weight, lastReps: lastSession.reps, predicted: prediction };
+            const last = history[history.length - 1];
+            const predicted = Math.round(last.weight * appState.progressionFactor * 2) / 2;
+            return { lastWeight: last.weight, lastReps: last.reps, predicted: predicted };
         }
 
         function deleteLogEntry(exerciseName, originalIndex) {
-            if (confirm('Usunąć ten wynik?')) {
+            showConfirmDialog('Usuń Wpis', 'Czy na pewno chcesz usunąć ten wynik?', function () {
                 appState.logs[exerciseName].splice(originalIndex, 1);
-                saveData(); // Save changes
+                saveData();
                 renderModalContent();
                 const history = appState.logs[exerciseName] || [];
                 const last = history.length > 0 ? history[history.length - 1] : null;
-                document.getElementById('modal-last-weight').innerText = last ? `${last.weight}kg x ${last.reps}` : '--';
-            }
+                document.getElementById('modal-last-weight').innerText = last ? last.weight + 'kg x ' + last.reps : '--';
+            });
         }
 
-        function addExerciseLogic(dayId) {
-            const name = prompt("Podaj nazwę nowego ćwiczenia:");
-            if (name && name.trim() !== "") {
-                if (!appState.exercises[dayId]) appState.exercises[dayId] = [];
-                appState.exercises[dayId].push(name.trim());
-                saveData(); // Save changes
-                renderWorkoutDay(dayId);
-            }
+        function addExerciseLogic(planId) {
+            showInputDialog('Nowe Ćwiczenie', 'Nazwa ćwiczenia...', '', function (name) {
+                const plan = appState.plans.find(p => p.id === planId);
+                if (plan) {
+                    plan.exercises.push(name);
+                    saveData();
+                    renderWorkoutDay(planId);
+                }
+            });
         }
 
-        function removeExerciseLogic(dayId, index) {
-            if (confirm("Czy na pewno chcesz usunąć to ćwiczenie?")) {
-                appState.exercises[dayId].splice(index, 1);
-                saveData(); // Save changes
-                renderWorkoutDay(dayId);
-            }
+        function removeExerciseLogic(planId, index) {
+            const plan = appState.plans.find(p => p.id === planId);
+            const exName = plan.exercises[index];
+            showConfirmDialog('Usuń Ćwiczenie', 'Czy na pewno chcesz usunąć "' + exName + '"?', function () {
+                plan.exercises.splice(index, 1);
+                saveData();
+                renderWorkoutDay(planId);
+            });
         }
 
         // --- 3. UI RENDERING ---
@@ -297,32 +1803,28 @@
         const pageTitle = document.getElementById('page-title');
         const headerAction = document.getElementById('header-action');
 
-        function router(view, params = null) {
+        function router(view, params) {
             appState.currentView = view;
             container.innerHTML = '';
 
-            // Update Nav
             document.querySelectorAll('nav button').forEach(btn => {
-                const isActive = btn.onclick.toString().includes(`'${view}'`) && view !== 'workout';
+                const isActive = btn.onclick.toString().includes("'" + view + "'") && view !== 'workout' && view !== 'plans';
                 if (isActive) btn.classList.add('active-nav');
                 else btn.classList.remove('active-nav');
             });
 
             if (view === 'home') {
                 renderHome();
-                headerAction.innerHTML = '';
+                headerAction.innerHTML = '<button onclick="router(\'plans\')" class="w-10 h-10 rounded-full bg-zinc-800/50 hover:bg-zinc-700 flex items-center justify-center transition-colors"><span class="material-symbols-outlined text-zinc-400">more_vert</span></button>';
+            } else if (view === 'plans') {
+                renderPlanManager();
+                headerAction.innerHTML = '<button onclick="router(\'home\')" class="p-2 -mr-2 text-zinc-400 hover:text-white transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>';
             } else if (view === 'workout') {
                 appState.currentDayId = params;
                 renderWorkoutDay(params);
-                headerAction.innerHTML = `
-                    <button onclick="router('home')" class="p-2 -mr-2 text-zinc-400 hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">arrow_back</span>
-                    </button>`;
+                headerAction.innerHTML = '<button onclick="router(\'home\')" class="p-2 -mr-2 text-zinc-400 hover:text-white transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>';
             } else if (view === 'body') {
                 renderBodyWeight();
-                headerAction.innerHTML = '';
-            } else if (view === 'settings') {
-                renderSettings();
                 headerAction.innerHTML = '';
             }
         }
@@ -330,60 +1832,139 @@
         function renderHome() {
             pageTitle.innerText = "Twój Plan";
             const list = document.createElement('div');
-            list.className = "flex flex-col gap-4 fade-in";
+            list.className = "flex flex-col gap-4 fade-in pb-20";
 
-            defaultSplits.forEach((day) => {
-                const btn = document.createElement('button');
-                btn.className = "text-left w-full bg-zinc-900/40 backdrop-blur-md border border-white/5 p-5 rounded-3xl flex items-center justify-between group tap-active hover:bg-zinc-800/50 transition-all shadow-lg shadow-black/20";
-                btn.onclick = () => router('workout', day.id);
-                const count = appState.exercises[day.id] ? appState.exercises[day.id].length : 0;
-                btn.innerHTML = `
-                    <div>
-                        <div class="flex items-center gap-3 mb-1">
-                            <h3 class="font-bold text-xl text-white tracking-tight">${day.name}</h3>
-                            <span class="text-[9px] text-emerald-500 font-extrabold uppercase tracking-wider bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">${count} ćwiczeń</span>
-                        </div>
-                        <p class="text-xs text-zinc-500 font-medium">${day.sub}</p>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                        <span class="material-symbols-outlined text-zinc-500 group-hover:text-black text-lg">chevron_right</span>
-                    </div>
-                `;
-                list.appendChild(btn);
+            const weekDays = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
+            const todayIndex = new Date().getDay() || 7;
+            const reorderedDays = [
+                ...weekDays.slice(todayIndex - 1),
+                ...weekDays.slice(0, todayIndex - 1)
+            ];
+
+            reorderedDays.forEach((dayName, offsetIndex) => {
+                const originalIndex = (todayIndex - 1 + offsetIndex) % 7;
+                const dayId = originalIndex + 1;
+                const planId = appState.schedule[dayId];
+                const plan = planId ? appState.plans.find(p => p.id === planId) : null;
+                const isToday = dayId === todayIndex;
+
+                const dayCard = document.createElement('div');
+                dayCard.className = "p-5 rounded-3xl border " + (isToday ? 'bg-zinc-800/80 border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'bg-zinc-900/40 border-white/5') + " flex items-center justify-between";
+
+                let content = '<div class="flex-1"><p class="text-[10px] font-bold uppercase tracking-widest ' + (isToday ? 'text-emerald-400' : 'text-zinc-500') + ' mb-1">' + dayName + '</p><h3 class="' + (plan ? 'text-white font-bold text-lg' : 'text-zinc-600 font-medium italic') + '">' + (plan ? plan.name : 'Dzień wolny') + '</h3></div>';
+
+                if (plan) {
+                    content += '<button onclick="router(\'workout\', \'' + plan.id + '\')" class="w-12 h-12 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-500 hover:text-black flex items-center justify-center transition-all border border-emerald-500/20 hover:border-transparent"><span class="material-symbols-outlined">play_arrow</span></button>';
+                } else {
+                    content += '<div class="w-12 h-12 rounded-full bg-zinc-800/50 flex items-center justify-center"><span class="material-symbols-outlined text-zinc-700 text-lg">remove</span></div>';
+                }
+
+                dayCard.innerHTML = content;
+                list.appendChild(dayCard);
+                if (offsetIndex === 0) {
+                    const separator = document.createElement('hr');
+                    separator.className = "border-t border-zinc-700 my-4";
+                    list.appendChild(separator);
+                }
             });
+
             container.appendChild(list);
         }
 
-        function renderWorkoutDay(dayId) {
+        function renderPlanManager() {
+            pageTitle.innerText = "Zarządzaj";
+            const list = document.createElement('div');
+            list.className = "flex flex-col gap-8 fade-in pb-20";
+
+            // Plans Section
+            const plansSection = document.createElement('div');
+            plansSection.innerHTML = '<h3 class="text-zinc-500 text-[10px] font-bold uppercase mb-4 px-1 tracking-widest">Twoje Plany</h3>';
+            const plansContainer = document.createElement('div');
+            plansContainer.className = "space-y-3";
+
+            appState.plans.forEach(plan => {
+                const el = document.createElement('div');
+                el.className = "bg-zinc-900/40 border border-white/5 p-4 rounded-2xl flex items-center justify-between";
+                el.innerHTML = '<div class="flex-1 cursor-pointer" onclick="router(\'workout\', \'' + plan.id + '\')"><h4 class="font-bold text-white">' + plan.name + '</h4><p class="text-xs text-zinc-500">' + plan.exercises.length + ' ćwiczeń</p></div><div class="flex gap-2"><button onclick="event.stopPropagation(); editPlanName(\'' + plan.id + '\')" class="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-lg">edit</span></button><button onclick="event.stopPropagation(); deletePlan(\'' + plan.id + '\')" class="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center text-red-400 hover:bg-red-500/20 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button></div>';
+                plansContainer.appendChild(el);
+            });
+
+            const createBtn = document.createElement('button');
+            createBtn.className = "w-full mt-3 py-4 rounded-2xl border border-dashed border-zinc-700 text-zinc-500 text-xs font-bold uppercase tracking-widest hover:border-emerald-500 hover:text-emerald-500 transition-all";
+            createBtn.innerHTML = "+ Utwórz Plan";
+            createBtn.onclick = createNewPlan;
+            plansContainer.appendChild(createBtn);
+            plansSection.appendChild(plansContainer);
+            list.appendChild(plansSection);
+
+            // Schedule Section with Select dropdowns
+            const scheduleSection = document.createElement('div');
+            scheduleSection.innerHTML = '<h3 class="text-zinc-500 text-[10px] font-bold uppercase mb-4 px-1 tracking-widest">Harmonogram Tygodnia</h3>';
+            const scheduleContainer = document.createElement('div');
+            scheduleContainer.className = "space-y-2";
+
+            const weekDays = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
+            weekDays.forEach((dayName, index) => {
+                const dayId = index + 1;
+                const currentPlanId = appState.schedule[dayId] || '';
+
+                const el = document.createElement('div');
+                el.className = "bg-zinc-900/40 border border-white/5 p-4 rounded-2xl flex items-center justify-between gap-4";
+
+                let selectOptions = '<option value="">Dzień wolny</option>';
+                appState.plans.forEach(p => {
+                    selectOptions += '<option value="' + p.id + '"' + (currentPlanId === p.id ? ' selected' : '') + '>' + p.name + '</option>';
+                });
+
+                el.innerHTML = '<span class="text-sm font-bold text-zinc-300 w-28">' + dayName + '</span><select onchange="updateSchedule(' + dayId + ', this.value)" class="flex-1 bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-emerald-500 transition-colors appearance-none cursor-pointer pr-10">' + selectOptions + '</select>';
+                scheduleContainer.appendChild(el);
+            });
+
+            scheduleSection.appendChild(scheduleContainer);
+            list.appendChild(scheduleSection);
+
+            // Progression Setting
+            const settingsSection = document.createElement('div');
+            settingsSection.innerHTML = '<h3 class="text-zinc-500 text-[10px] font-bold uppercase mb-4 px-1 tracking-widest">Ustawienia</h3>';
+            const settingsContainer = document.createElement('div');
+            settingsContainer.className = "bg-zinc-900/40 border border-white/5 p-5 rounded-2xl";
+            settingsContainer.innerHTML = '<div class="flex items-center justify-between mb-3"><span class="text-sm font-medium text-zinc-300">Progresja ciężaru</span><span class="font-mono text-emerald-400 font-bold" id="prog-val">' + ((appState.progressionFactor - 1) * 100).toFixed(1) + '%</span></div><input type="range" min="100" max="110" step="0.5" value="' + (appState.progressionFactor * 100) + '" class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="appState.progressionFactor = this.value / 100; document.getElementById(\'prog-val\').innerText = ((this.value - 100).toFixed(1) + \'%\'); saveData();">';
+            settingsSection.appendChild(settingsContainer);
+            list.appendChild(settingsSection);
+
+            container.appendChild(list);
+        }
+
+        function updateSchedule(dayId, planId) {
+            if (planId) {
+                appState.schedule[dayId] = planId;
+            } else {
+                delete appState.schedule[dayId];
+            }
+            saveData();
+        }
+
+        function renderWorkoutDay(planId) {
             container.innerHTML = '';
-            const dayInfo = defaultSplits.find(d => d.id === dayId);
-            pageTitle.innerText = dayInfo.name;
+            const plan = appState.plans.find(p => p.id === planId);
+            if (!plan) {
+                container.innerHTML = '<div class="p-10 text-center text-zinc-500">Plan nie znaleziony</div>';
+                return;
+            }
+            pageTitle.innerText = plan.name;
 
             const list = document.createElement('div');
             list.className = "space-y-3 fade-in";
-            const exercises = appState.exercises[dayId] || [];
 
-            if (exercises.length === 0) {
-                list.innerHTML = `<div class="text-center text-zinc-600 text-sm py-10">Brak ćwiczeń. Dodaj pierwsze!</div>`;
+            if (plan.exercises.length === 0) {
+                list.innerHTML = '<div class="text-center text-zinc-600 text-sm py-10">Brak ćwiczeń. Dodaj pierwsze!</div>';
             } else {
-                exercises.forEach((ex, index) => {
+                plan.exercises.forEach((ex, index) => {
                     const history = appState.logs[ex] || [];
                     const lastLog = history.length > 0 ? history[history.length - 1] : null;
                     const item = document.createElement('div');
                     item.className = "group relative bg-zinc-900/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden flex shadow-sm";
-                    item.innerHTML = `
-                        <div class="flex-1 p-5 tap-active cursor-pointer" onclick="openModal('${ex}')">
-                            <h4 class="font-bold text-zinc-100 text-lg leading-tight mb-2">${ex}</h4>
-                            <div class="flex items-center gap-2">
-                                ${lastLog
-                            ? `<span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]">${lastLog.weight}kg <span class="text-zinc-500 font-normal mx-1">x</span> ${lastLog.reps}</span>`
-                            : `<span class="text-[10px] uppercase font-bold text-zinc-500 bg-zinc-800 px-2 py-1 rounded">Nowe</span>`}
-                            </div>
-                        </div>
-                        <button onclick="removeExerciseLogic('${dayId}', ${index})" class="w-12 bg-zinc-900/50 hover:bg-red-500/20 hover:text-red-500 text-zinc-700 transition-colors flex items-center justify-center border-l border-white/5">
-                            <span class="material-symbols-outlined text-lg">delete</span>
-                        </button>
-                    `;
+                    item.innerHTML = '<div class="flex-1 p-5 tap-active cursor-pointer" onclick="openModal(\'' + ex.replace(/'/g, "\\'") + '\')"><h4 class="font-bold text-zinc-100 text-lg leading-tight mb-2">' + ex + '</h4><div class="flex items-center gap-2">' + (lastLog ? '<span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/20">' + lastLog.weight + 'kg x ' + lastLog.reps + '</span>' : '<span class="text-[10px] uppercase font-bold text-zinc-500 bg-zinc-800 px-2 py-1 rounded">Nowe</span>') + '</div></div><button onclick="removeExerciseLogic(\'' + planId + '\', ' + index + ')" class="w-12 bg-zinc-900/50 hover:bg-red-500/20 hover:text-red-500 text-zinc-700 transition-colors flex items-center justify-center border-l border-white/5"><span class="material-symbols-outlined text-lg">delete</span></button>';
                     list.appendChild(item);
                 });
             }
@@ -391,7 +1972,7 @@
             const addBtn = document.createElement('button');
             addBtn.className = "w-full mt-6 py-4 rounded-2xl border border-dashed border-zinc-700 text-zinc-500 text-xs font-bold uppercase tracking-widest hover:border-emerald-500 hover:text-emerald-500 transition-all tap-active";
             addBtn.innerHTML = "+ Dodaj ćwiczenie";
-            addBtn.onclick = () => addExerciseLogic(dayId);
+            addBtn.onclick = function () { addExerciseLogic(planId); };
             list.appendChild(addBtn);
             container.appendChild(list);
         }
@@ -403,18 +1984,11 @@
 
             const display = document.createElement('div');
             display.className = "flex flex-col items-center justify-center py-10 relative";
-            display.innerHTML = `
-                <div class="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full transform scale-75"></div>
-                <div class="text-[6rem] font-extrabold text-white leading-none tracking-tighter tabular-nums drop-shadow-2xl relative z-10" id="bw-display">${appState.currentWeight.toFixed(1)}</div>
-                <div class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] mt-4 font-bold relative z-10">Aktualna Waga (kg)</div>
-            `;
+            display.innerHTML = '<div class="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full transform scale-75"></div><div class="text-[6rem] font-extrabold text-white leading-none tracking-tighter tabular-nums drop-shadow-2xl relative z-10" id="bw-display">' + appState.currentWeight.toFixed(1) + '</div><div class="text-zinc-500 uppercase tracking-[0.3em] text-[10px] mt-4 font-bold relative z-10">Aktualna Waga (kg)</div>';
 
             const controls = document.createElement('div');
             controls.className = "bg-zinc-900/50 border border-white/5 p-2 rounded-3xl flex gap-2 mb-4";
-            controls.innerHTML = `
-                <button onclick="updateWeightVal(-0.1)" class="flex-1 py-4 rounded-2xl bg-black/40 hover:bg-zinc-800 text-zinc-400 text-3xl font-bold transition-colors">-</button>
-                <button onclick="updateWeightVal(0.1)" class="flex-1 py-4 rounded-2xl bg-black/40 hover:bg-zinc-800 text-white text-3xl font-bold transition-colors">+</button>
-            `;
+            controls.innerHTML = '<button onclick="updateWeightVal(-0.1)" class="flex-1 py-4 rounded-2xl bg-black/40 hover:bg-zinc-800 text-zinc-400 text-3xl font-bold transition-colors">-</button><button onclick="updateWeightVal(0.1)" class="flex-1 py-4 rounded-2xl bg-black/40 hover:bg-zinc-800 text-white text-3xl font-bold transition-colors">+</button>';
 
             const saveBtn = document.createElement('button');
             saveBtn.className = "w-full bg-emerald-500 text-black font-extrabold py-4 rounded-2xl uppercase tracking-widest text-xs hover:bg-emerald-400 tap-active shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all";
@@ -423,18 +1997,13 @@
 
             const historyList = document.createElement('div');
             historyList.className = "mt-8 space-y-2";
-            historyList.innerHTML = `<h3 class="text-zinc-500 text-[10px] font-bold uppercase mb-4 px-1 tracking-widest">Ostatnie Pomiary</h3>`;
+            historyList.innerHTML = '<h3 class="text-zinc-500 text-[10px] font-bold uppercase mb-4 px-1 tracking-widest">Ostatnie Pomiary</h3>';
 
-            const logs = [...appState.weightHistory].reverse();
-            if (logs.length === 0) historyList.innerHTML += `<div class="text-zinc-700 text-xs px-1">Brak pomiarów.</div>`;
+            const logs = appState.weightHistory.slice().reverse();
+            if (logs.length === 0) historyList.innerHTML += '<div class="text-zinc-700 text-xs px-1">Brak pomiarów.</div>';
 
             logs.slice(0, 10).forEach(entry => {
-                historyList.innerHTML += `
-                    <div class="flex justify-between items-center p-4 bg-zinc-900/30 rounded-xl border border-white/5 text-sm">
-                        <span class="text-zinc-500 text-xs font-medium">${entry.date}</span>
-                        <span class="text-white font-mono font-bold text-lg">${entry.weight.toFixed(1)}</span>
-                    </div>
-                `;
+                historyList.innerHTML += '<div class="flex justify-between items-center p-4 bg-zinc-900/30 rounded-xl border border-white/5 text-sm"><span class="text-zinc-500 text-xs font-medium">' + entry.date + '</span><span class="text-white font-mono font-bold text-lg">' + entry.weight.toFixed(1) + '</span></div>';
             });
 
             wrapper.appendChild(display);
@@ -452,34 +2021,8 @@
         function saveBodyWeight() {
             const today = new Date().toLocaleDateString('pl-PL');
             appState.weightHistory.push({ date: today, weight: appState.currentWeight });
-            saveData(); // Save changes
+            saveData();
             router('body');
-        }
-
-        function renderSettings() {
-            pageTitle.innerText = "Ustawienia";
-            const div = document.createElement('div');
-            div.className = "space-y-6 fade-in";
-            div.innerHTML = `
-                <div class="bg-zinc-900/40 backdrop-blur-md p-6 rounded-3xl border border-white/5">
-                    <h3 class="text-white font-bold mb-2 text-lg">Progresja</h3>
-                    <p class="text-zinc-500 text-xs leading-relaxed mb-6">
-                        Automatyczne zwiększanie ciężaru o:
-                    </p>
-                    <div class="flex items-center gap-6">
-                        <input type="range" min="100" max="110" step="0.5" value="${appState.progressionFactor * 100}" 
-                            class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-                            oninput="appState.progressionFactor = this.value / 100; document.getElementById('prog-val').innerText = ((this.value - 100).toFixed(1) + '%'); saveData();">
-                        <span class="font-mono text-emerald-400 font-bold text-xl w-16 text-right" id="prog-val">${((appState.progressionFactor - 1) * 100).toFixed(1)}%</span>
-                    </div>
-                </div>
-
-                <div class="bg-zinc-900/40 backdrop-blur-md p-6 rounded-3xl border border-white/5">
-                    <h3 class="text-white font-bold mb-2 text-lg">Dane (JSON)</h3>
-                    <textarea class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-[10px] text-zinc-400 font-mono h-32 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none" readonly>${JSON.stringify(appState)}</textarea>
-                </div>
-            `;
-            container.appendChild(div);
         }
 
         // --- 4. MODAL LOGIC ---
@@ -494,19 +2037,19 @@
             document.getElementById('modal-exercise-name').innerText = exerciseName;
             const history = appState.logs[exerciseName] || [];
             const last = history.length > 0 ? history[history.length - 1] : null;
-            document.getElementById('modal-last-weight').innerText = last ? `${last.weight}kg x ${last.reps}` : '--';
+            document.getElementById('modal-last-weight').innerText = last ? last.weight + 'kg x ' + last.reps : '--';
             renderModalContent();
             modal.classList.remove('hidden');
             content.classList.remove('modal-exit-active');
             content.classList.add('modal-enter-active');
-            setTimeout(() => { content.classList.remove('modal-enter', 'modal-enter-active'); }, 300);
+            setTimeout(function () { content.classList.remove('modal-enter', 'modal-enter-active'); }, 300);
         }
 
         function closeModal() {
             const modal = document.getElementById('exercise-modal');
             const content = document.getElementById('modal-content');
             content.classList.add('modal-exit-active');
-            setTimeout(() => {
+            setTimeout(function () {
                 modal.classList.add('hidden');
                 content.classList.remove('modal-exit-active');
             }, 300);
@@ -519,7 +2062,7 @@
         }
 
         function renderModalContent() {
-            const container = document.getElementById('modal-body-content');
+            const cont = document.getElementById('modal-body-content');
             const tabLog = document.getElementById('tab-log');
             const tabHistory = document.getElementById('tab-history');
 
@@ -529,81 +2072,44 @@
 
                 const predData = getPrediction(currentModalExercise);
                 const suggestedWeight = predData ? predData.predicted : '';
+                const currentSeat = appState.seatSettings ? (appState.seatSettings[currentModalExercise] || '') : '';
 
-                container.innerHTML = `
-                    <div class="fade-in space-y-6 pt-2">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-black/40 p-5 rounded-3xl border border-white/5 focus-within:border-emerald-500/50 transition-colors">
-                                <label class="block text-[10px] uppercase text-zinc-500 mb-2 font-bold tracking-wider">Ciężar (kg)</label>
-                                <input id="inp-weight" type="number" step="0.5" placeholder="0" value="${suggestedWeight}" class="w-full bg-transparent text-5xl font-bold text-white outline-none placeholder-zinc-800">
-                            </div>
-                            <div class="bg-black/40 p-5 rounded-3xl border border-white/5 focus-within:border-emerald-500/50 transition-colors">
-                                <label class="block text-[10px] uppercase text-zinc-500 mb-2 font-bold tracking-wider">Powtórzenia</label>
-                                <input id="inp-reps" type="number" placeholder="0" class="w-full bg-transparent text-5xl font-bold text-white outline-none placeholder-zinc-800">
-                            </div>
-                        </div>
-
-                        <div class="bg-emerald-500/5 p-5 rounded-2xl border border-emerald-500/10 flex items-start gap-4">
-                            <span class="material-symbols-outlined text-emerald-500 mt-1">auto_graph</span>
-                            <div>
-                                <p class="text-xs text-emerald-400 font-bold uppercase mb-1 tracking-wider">Sugestia</p>
-                                <p class="text-sm text-zinc-300 leading-relaxed">
-                                    ${predData ? `Ostatnio: ${predData.lastWeight}kg. Spróbuj <span class="text-white font-bold text-lg">${predData.predicted}kg</span>.` : 'Brak danych. Rozpocznij cykl.'}
-                                </p>
-                            </div>
-                        </div>
-
-                        <button onclick="commitLog()" class="w-full py-5 bg-white text-black font-extrabold text-sm uppercase tracking-widest rounded-2xl hover:bg-zinc-200 tap-active shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-all">
-                            Zapisz Serię
-                        </button>
-                    </div>
-                `;
+                cont.innerHTML = '<div class="fade-in space-y-6 pt-2"><div class="grid grid-cols-2 gap-4"><div class="bg-black/40 p-5 rounded-3xl border border-white/5 focus-within:border-emerald-500/50 transition-colors"><label class="block text-[10px] uppercase text-zinc-500 mb-2 font-bold tracking-wider">Ciężar (kg)</label><input id="inp-weight" type="number" step="0.5" placeholder="0" value="' + suggestedWeight + '" class="w-full bg-transparent text-5xl font-bold text-white outline-none placeholder-zinc-800"></div><div class="bg-black/40 p-5 rounded-3xl border border-white/5 focus-within:border-emerald-500/50 transition-colors"><label class="block text-[10px] uppercase text-zinc-500 mb-2 font-bold tracking-wider">Powtórzenia</label><input id="inp-reps" type="number" placeholder="0" class="w-full bg-transparent text-5xl font-bold text-white outline-none placeholder-zinc-800"></div></div><div class="bg-black/40 p-4 rounded-2xl border border-white/5 flex items-center gap-3"><span class="material-symbols-outlined text-zinc-500">chair</span><input id="inp-seat" type="text" placeholder="Ustawienie siedzenia" value="' + currentSeat + '" class="bg-transparent w-full text-sm text-white placeholder-zinc-600 outline-none font-medium"></div><div class="bg-emerald-500/5 p-5 rounded-2xl border border-emerald-500/10 flex items-start gap-4"><span class="material-symbols-outlined text-emerald-500 mt-1">auto_graph</span><div><p class="text-xs text-emerald-400 font-bold uppercase mb-1 tracking-wider">Sugestia</p><p class="text-sm text-zinc-300 leading-relaxed">' + (predData ? 'Ostatnio: ' + predData.lastWeight + 'kg. Spróbuj <span class="text-white font-bold text-lg">' + predData.predicted + 'kg</span>.' : 'Brak danych. Rozpocznij cykl.') + '</p></div></div><button onclick="commitLog()" class="w-full py-5 bg-white text-black font-extrabold text-sm uppercase tracking-widest rounded-2xl hover:bg-zinc-200 tap-active shadow-[0_0_25px_rgba(255,255,255,0.1)] transition-all">Zapisz Serię</button></div>';
             } else {
                 tabHistory.className = "flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-zinc-800 shadow-sm transition-all";
                 tabLog.className = "flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-all";
 
                 const history = appState.logs[currentModalExercise] || [];
                 if (history.length === 0) {
-                    container.innerHTML = `<div class="text-center text-zinc-600 text-sm py-10 fade-in">Brak historii.</div>`;
+                    cont.innerHTML = '<div class="text-center text-zinc-600 text-sm py-10 fade-in">Brak historii.</div>';
                 } else {
-                    let html = `<div class="space-y-3 fade-in pt-2">`;
+                    let html = '<div class="space-y-3 fade-in pt-2">';
                     const len = history.length;
-                    [...history].reverse().forEach((log, reversedIndex) => {
+                    history.slice().reverse().forEach((log, reversedIndex) => {
                         const originalIndex = len - 1 - reversedIndex;
-                        html += `
-                            <div class="flex justify-between items-center p-5 bg-zinc-900/40 border border-white/5 rounded-2xl group">
-                                <span class="text-zinc-500 text-xs font-bold tracking-wide">${log.date}</span>
-                                <div class="flex items-center gap-5">
-                                    <div class="text-right">
-                                        <span class="text-white font-bold text-xl">${log.weight}</span> <span class="text-zinc-600 text-xs uppercase font-bold mr-1">kg</span>
-                                        <span class="text-zinc-400 text-xl">x ${log.reps}</span>
-                                    </div>
-                                    <button onclick="deleteLogEntry('${currentModalExercise}', ${originalIndex})" class="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-red-500 hover:bg-red-500/10 transition-colors">
-                                        <span class="material-symbols-outlined text-lg">delete</span>
-                                    </button>
-                                </div>
-                            </div>
-                        `;
+                        html += '<div class="flex justify-between items-center p-5 bg-zinc-900/40 border border-white/5 rounded-2xl group"><span class="text-zinc-500 text-xs font-bold tracking-wide">' + log.date + '</span><div class="flex items-center gap-5"><div class="text-right"><span class="text-white font-bold text-xl">' + log.weight + '</span> <span class="text-zinc-600 text-xs uppercase font-bold mr-1">kg</span><span class="text-zinc-400 text-xl">x ' + log.reps + '</span></div><button onclick="deleteLogEntry(\'' + currentModalExercise.replace(/'/g, "\\'") + '\', ' + originalIndex + ')" class="w-10 h-10 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-red-500 hover:bg-red-500/10 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button></div></div>';
                     });
-                    html += `</div>`;
-                    container.innerHTML = html;
+                    html += '</div>';
+                    cont.innerHTML = html;
                 }
             }
         }
 
         function commitLog() {
-            // Force keyboard close to prevent layout shifts
-            if (document.activeElement) {
-                document.activeElement.blur();
-            }
-
+            if (document.activeElement) document.activeElement.blur();
             const w = document.getElementById('inp-weight').value;
             const r = document.getElementById('inp-reps').value;
-            if (!w || !r) return alert("Wpisz ciężar i powtórzenia");
+            const s = document.getElementById('inp-seat').value;
+            if (!w || !r) {
+                showDialog('<div class="text-center"><span class="material-symbols-outlined text-4xl text-amber-500 mb-3">warning</span><h3 class="text-lg font-bold text-white mb-2">Brakujące dane</h3><p class="text-zinc-400 text-sm mb-4">Wpisz ciężar i powtórzenia</p><button onclick="closeDialog()" class="w-full py-3 rounded-xl bg-zinc-800 text-white font-bold text-sm hover:bg-zinc-700 transition-colors">OK</button></div>');
+                return;
+            }
             const today = new Date().toLocaleDateString('pl-PL');
             if (!appState.logs[currentModalExercise]) appState.logs[currentModalExercise] = [];
             appState.logs[currentModalExercise].push({ date: today, weight: parseFloat(w), reps: parseInt(r) });
-            saveData(); // Save changes
+            if (!appState.seatSettings) appState.seatSettings = {};
+            appState.seatSettings[currentModalExercise] = s;
+            saveData();
             switchModalTab('history');
         }
 
@@ -613,48 +2119,49 @@
         let touchStartY = 0;
         let isDragging = false;
 
-        modalContent.addEventListener('touchstart', (e) => {
+        modalContent.addEventListener('touchstart', function (e) {
             const isBody = e.target.closest('#modal-body-content');
-            // Allow drag if touching handle/header OR if body is at top
             if (isBody && modalBody.scrollTop > 0) return;
-
             touchStartY = e.touches[0].clientY;
             isDragging = true;
             modalContent.style.transition = 'none';
         }, { passive: true });
 
-        modalContent.addEventListener('touchmove', (e) => {
+        modalContent.addEventListener('touchmove', function (e) {
             if (!isDragging) return;
             const currentY = e.touches[0].clientY;
             const delta = currentY - touchStartY;
-
-            // Only move if dragging down
             if (delta > 0) {
-                e.preventDefault(); // Block native scroll
-                modalContent.style.transform = `translateY(${delta}px)`;
+                e.preventDefault();
+                modalContent.style.transform = 'translateY(' + delta + 'px)';
             }
         }, { passive: false });
 
-        modalContent.addEventListener('touchend', (e) => {
+        modalContent.addEventListener('touchend', function (e) {
             if (!isDragging) return;
             isDragging = false;
             modalContent.style.transition = '';
-
             const currentY = e.changedTouches[0].clientY;
             const delta = currentY - touchStartY;
-
             if (delta > 100) {
-                modalContent.style.transform = ''; // Clear inline so class takes over
+                modalContent.style.transform = '';
                 closeModal();
             } else {
-                modalContent.style.transform = ''; // Snap back
+                modalContent.style.transform = '';
             }
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
+        // Close dialog on backdrop click
+        document.getElementById('custom-dialog').addEventListener('click', function (e) {
+            if (e.target === this) closeDialog();
+        });
+
+        window.addEventListener('DOMContentLoaded', function () {
             router('home');
         });
     </script>
+
+
 </body>
 
 </html>
