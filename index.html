@@ -2159,9 +2159,13 @@
         window.addEventListener('DOMContentLoaded', function () {
             router('home');
         });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('SW registered'))
+                .catch(err => console.error('SW registration failed', err));
+        }
     </script>
-
-
 </body>
 
 </html>
